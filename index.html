@@ -1,132 +1,103 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>ENDURO LAB — GR7 · BRZ · FXMOTO</title>
 <style>
-:root{--bg:#06080b;--panel:#0d1117;--panel2:#121820;--line:#222b35;--txt:#f4f7fa;--muted:#8f9aa7;--lime:#caff28;--orange:#ff7b31}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% 0,#172019 0,#06080b 34%);color:var(--txt);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
-a{color:inherit;text-decoration:none}.wrap{width:min(1200px,calc(100% - 32px));margin:auto}
-nav{position:sticky;top:0;z-index:50;height:70px;background:#06080bdd;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff10}.navin{height:100%;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:950;letter-spacing:3px}.logo i{color:var(--lime);font-style:normal}.links{display:flex;gap:26px;color:#aab3bd;font-size:14px}.links a:hover{color:#fff}
-.hero{padding:70px 0 45px;display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:center}.eyebrow{color:var(--lime);font-size:12px;letter-spacing:3px;font-weight:900}.hero h1{font-size:clamp(52px,8vw,105px);line-height:.83;margin:17px 0}.hero h1 span{color:#8c97a3}.hero p{color:var(--muted);font-size:17px;line-height:1.75;max-width:560px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.chip{border:1px solid var(--line);padding:8px 11px;border-radius:99px;color:#cbd2d9;font-size:12px;background:#ffffff04}
-.btn{display:inline-flex;margin-top:25px;background:var(--lime);color:#111500;font-weight:900;padding:14px 19px;border-radius:10px}
-.viewer{height:600px;border:1px solid #ffffff12;border-radius:28px;overflow:hidden;position:relative;background:radial-gradient(circle at 50% 48%,#29343d,#090c11 68%);box-shadow:0 30px 100px #0008}.viewer canvas{width:100%;height:100%;display:block}.viewer .label{position:absolute;left:18px;top:18px;font-size:11px;color:#aab3bd;background:#080b0ecc;border:1px solid #ffffff12;padding:8px 10px;border-radius:8px}.viewer .hint{position:absolute;bottom:16px;left:18px;color:#89939f;font-size:12px}
-section{padding:80px 0}.head{display:flex;justify-content:space-between;gap:30px;align-items:end}.head h2{font-size:clamp(34px,5vw,58px);margin:8px 0}.head p{color:var(--muted);max-width:610px;line-height:1.7}
-.models{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:35px}.model{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:linear-gradient(145deg,#11171e,#0b0f14)}.model.active{border-color:#ffffff3d}.mini{height:220px;background:radial-gradient(circle,#222b32,#0b0e13);position:relative}.mini canvas{width:100%;height:100%}.modelbody{padding:20px}.modelbody h3{font-size:23px;margin:0}.modelbody p{color:var(--muted);font-size:14px;line-height:1.55;min-height:44px}.tag{font-size:10px;color:var(--lime);letter-spacing:1.5px;font-weight:800}.model button{width:100%;border:1px solid var(--line);background:#ffffff05;color:#fff;padding:12px;border-radius:9px;cursor:pointer}.model button:hover{background:#ffffff0d}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}.stat{padding:22px;border:1px solid var(--line);border-radius:14px;background:#0d1218}.stat small{color:#7f8a96}.stat b{display:block;font-size:26px;margin-top:7px}
-.table{margin-top:28px;border:1px solid var(--line);border-radius:16px;overflow:hidden}.r{display:grid;grid-template-columns:1fr 1.5fr;padding:16px 19px;border-bottom:1px solid var(--line)}.r:last-child{border:0}.r:nth-child(even){background:#ffffff03}.r span:first-child{color:#88939f}.r span:last-child{font-weight:700}
-.note{margin-top:20px;padding:15px 17px;border:1px solid #ffffff12;border-radius:12px;color:#8f99a4;font-size:12px;line-height:1.6}.compare{overflow:auto;margin-top:25px}.compare table{width:100%;min-width:720px;border-collapse:collapse}.compare th,.compare td{border-bottom:1px solid var(--line);padding:15px;text-align:left}.compare th{color:var(--lime);font-size:13px}.compare td{color:#b9c1c9}
-footer{padding:35px 0;border-top:1px solid var(--line);color:#68737f;font-size:12px}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.viewer{height:500px}.models{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.head{display:block}}
-@media(max-width:600px){.wrap{width:min(100% - 22px,1200px)}.links{display:none}.hero{padding-top:45px}.hero h1{font-size:62px}.hero p{font-size:15px}.viewer{height:390px;border-radius:20px}.models{grid-template-columns:1fr}.mini{height:230px}.stats{grid-template-columns:1fr 1fr}.stat b{font-size:21px}.r{grid-template-columns:1fr;gap:6px}.r span:last-child{font-size:14px}}
-
-.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
-.photo-card{display:block;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#0d1218;transition:.25s}
-.photo-card:hover{transform:translateY(-4px);border-color:#ffffff3d}
-.photo-card img{width:100%;height:300px;object-fit:cover;display:block;background:#fff}
-.photo-card div{padding:17px}.photo-card b{display:block;font-size:17px}.photo-card span{display:block;color:var(--muted);font-size:12px;margin-top:6px}
-.source-note{margin-top:14px;color:#69737f;font-size:11px;line-height:1.6}
-@media(max-width:900px){.photo-grid{grid-template-columns:1fr 1fr}.photo-card img{height:260px}}
-@media(max-width:600px){.photo-grid{grid-template-columns:1fr}.photo-card img{height:280px}}
+:root{--bg:#06080b;--panel:#0d1117;--line:#252e38;--txt:#f5f7fa;--muted:#909aa6;--lime:#caff28;--orange:#ff7b31}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% 0,#182119 0,#06080b 36%);color:var(--txt);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}a{color:inherit;text-decoration:none}.wrap{width:min(1200px,calc(100% - 30px));margin:auto}
+nav{position:sticky;top:0;z-index:50;height:66px;background:#06080bdd;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff10}.navin{height:100%;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:950;letter-spacing:3px}.logo i{color:var(--lime);font-style:normal}.links{display:flex;gap:25px;color:#aab3bd;font-size:14px}.links a:hover{color:#fff}
+.hero{padding:65px 0 45px;display:grid;grid-template-columns:.9fr 1.1fr;gap:38px;align-items:center}.eyebrow{color:var(--lime);font-size:11px;letter-spacing:3px;font-weight:900}.hero h1{font-size:clamp(52px,8vw,105px);line-height:.84;margin:17px 0}.hero h1 span{color:#8c97a3}.hero p{color:var(--muted);font-size:17px;line-height:1.7;max-width:550px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.chip{border:1px solid var(--line);padding:8px 11px;border-radius:99px;color:#cbd2d9;font-size:12px;background:#ffffff04}.btn{display:inline-flex;margin-top:24px;background:var(--lime);color:#111500;font-weight:900;padding:14px 19px;border-radius:10px}
+.viewer{height:560px;border:1px solid #ffffff14;border-radius:28px;overflow:hidden;background:radial-gradient(circle at 50% 35%,#28322b,#0a0e12 65%);position:relative;box-shadow:0 30px 100px #0009}.viewer canvas{width:100%;height:100%;display:block;touch-action:none}.viewer-ui{position:absolute;inset:0;pointer-events:none}.viewer-title{position:absolute;left:20px;top:18px;font-size:11px;letter-spacing:2px;color:#dfe6eb;font-weight:800}.viewer-help{position:absolute;right:20px;top:18px;font-size:11px;color:#77828e}.viewer-bottom{position:absolute;left:18px;right:18px;bottom:18px;display:flex;justify-content:space-between;align-items:end}.model-name{font-size:24px;font-weight:900}.model-sub{font-size:12px;color:#89939e;margin-top:4px}.model-pills{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.model-pill{background:#05070acc;border:1px solid #ffffff18;border-radius:99px;padding:7px 10px;font-size:10px;color:#c9d1d8}
+section{padding:75px 0}.head{display:flex;justify-content:space-between;gap:30px;align-items:end}.head h2{font-size:clamp(34px,5vw,58px);margin:8px 0}.head p{color:var(--muted);max-width:610px;line-height:1.7}.model-switch{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:25px}.switch{cursor:pointer;border:1px solid var(--line);border-radius:15px;background:#0d1218;padding:16px;color:#cbd2d9;text-align:left;transition:.2s}.switch:hover,.switch.active{border-color:var(--lime);box-shadow:0 0 0 1px #caff2833 inset}.switch b{display:block;font-size:18px;color:#fff}.switch span{font-size:11px;color:#7f8a95;display:block;margin-top:5px}.models-note{margin-top:14px;color:#69737f;font-size:11px}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}.photo-card{display:block;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#0d1218;transition:.2s}.photo-card:hover{transform:translateY(-3px);border-color:#ffffff3d}.photo-card img{width:100%;height:310px;object-fit:cover;display:block;background:#fff}.photo-card div{padding:16px}.photo-card b{display:block;font-size:16px}.photo-card span{display:block;color:var(--muted);font-size:12px;margin-top:6px}.source-note{margin-top:16px;color:#69737f;font-size:11px;line-height:1.6}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}.stat{padding:22px;border:1px solid var(--line);border-radius:14px;background:#0d1218}.stat small{color:#7f8a96}.stat b{display:block;font-size:26px;margin-top:7px}.table{margin-top:28px;border:1px solid var(--line);border-radius:16px;overflow:hidden}.r{display:grid;grid-template-columns:1fr 1.5fr;padding:16px 19px;border-bottom:1px solid var(--line)}.r:last-child{border:0}.r:nth-child(even){background:#ffffff03}.r span:first-child{color:#88939f}.r span:last-child{font-weight:700}.compare{overflow:auto;margin-top:25px}.compare table{width:100%;min-width:720px;border-collapse:collapse}.compare th,.compare td{border-bottom:1px solid var(--line);padding:15px;text-align:left}.compare th{color:var(--lime);font-size:13px}.compare td{color:#b9c1c9}footer{padding:35px 0;border-top:1px solid var(--line);color:#68737f;font-size:12px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.viewer{height:470px}.model-switch{grid-template-columns:1fr 1fr}.photo-grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.head{display:block}}
+@media(max-width:600px){.wrap{width:min(100% - 22px,1200px)}.links{display:none}.hero{padding-top:42px;gap:24px}.hero h1{font-size:62px}.hero p{font-size:15px}.viewer{height:390px;border-radius:20px}.viewer-help{display:none}.viewer-bottom{bottom:14px}.model-name{font-size:19px}.model-pills{display:none}.model-switch,.photo-grid{grid-template-columns:1fr}.photo-card img{height:300px}.stats{grid-template-columns:1fr 1fr}.r{grid-template-columns:1fr;gap:6px}.r span:last-child{font-size:14px}}
 </style>
 </head>
 <body>
-<nav><div class="wrap navin"><div class="logo">ENDURO <i>LAB</i></div><div class="links"><a href="#models">Модели</a><a href="#photos">Фото</a><a href="#specs">Характеристики</a><a href="#compare">Сравнение</a></div></div></nav>
-
+<nav><div class="wrap navin"><div class="logo">ENDURO <i>LAB</i></div><div class="links"><a href="#models">3D Модели</a><a href="#photos">Фото</a><a href="#specs">Характеристики</a><a href="#compare">Сравнение</a></div></div></nav>
 <header class="wrap hero">
-<div><div class="eyebrow">3D MOTORCYCLE GARAGE</div><h1>GR7<span>2024</span></h1>
-<p>Интерактивный каталог эндуро-мотоциклов. Выбирай модель, вращай её на 360°, изучай двигатель, подвеску, размеры и ключевые характеристики.</p>
-<div class="chips"><span class="chip">ZS182MN</span><span class="chip">287 см³</span><span class="chip">31 л.с.</span><span class="chip">21 / 18</span></div>
-<a class="btn" href="#models">Выбрать мотоцикл ↓</a></div>
-<div class="viewer" id="mainViewer"><div class="label" id="viewerLabel">GR7 · 2024 · ZS182MN</div><div class="hint">↔ вращение · колесо/щипок — масштаб</div></div>
+<div><div class="eyebrow">REALISTIC WEB 3D</div><h1>GR7<span>2024</span></h1><p>Интерактивные 3D-модели эндуро с металлическими материалами, колёсами, рамой, двигателем и подвеской. Поворачивай пальцем или мышью.</p><div class="chips"><span class="chip">ZS182MN</span><span class="chip">287 см³</span><span class="chip">31 л.с.</span><span class="chip">21 / 18</span></div><a class="btn" href="#models">Открыть 3D ↓</a></div>
+<div class="viewer" id="viewer"><canvas id="main3d"></canvas><div class="viewer-ui"><div class="viewer-title">WEBGL / REALISTIC MATERIALS</div><div class="viewer-help">↔ вращение · колесо / щипок — масштаб</div><div class="viewer-bottom"><div><div class="model-name" id="vname">GR7 F300L</div><div class="model-sub" id="vsub">2024 · ZS182MN · ENDURO</div></div><div class="model-pills"><span class="model-pill">METAL</span><span class="model-pill">PBR-LIKE</span><span class="model-pill">INTERACTIVE</span></div></div></div></div>
 </header>
 
-<section id="models"><div class="wrap"><div class="head"><div><div class="eyebrow">01 / MODELS</div><h2>Три характера.</h2></div><p>Все модели показаны в интерактивном 3D-просмотрщике. На телефоне вращай модель пальцем, на ПК — мышью.</p></div>
-<div class="models">
-<article class="model active" data-bike="gr7"><div class="mini" id="mini1"></div><div class="modelbody"><div class="tag">ENDURO · 2024</div><h3>GR7 F300L</h3><p>ZS182MN · 287 см³ · 31 л.с. · 21/18</p><button>Открыть 3D</button></div></article>
-<article class="model" data-bike="brz"><div class="mini" id="mini2"></div><div class="modelbody"><div class="tag">ENDURO · NC300</div><h3>BRZ NC300</h3><p>Версия с 182-мотором. Геометрия и комплектация могут зависеть от поставки.</p><button>Открыть 3D</button></div></article>
-<article class="model" data-bike="fx"><div class="mini" id="mini3"></div><div class="modelbody"><div class="tag">BLACK · X1</div><h3>FXMOTO X1</h3><p>Чёрная версия X1. Для точных параметров конкретной комплектации сверяй паспорт.</p><button>Открыть 3D</button></div></article>
-</div></div></section>
+<section id="models"><div class="wrap"><div class="head"><div><div class="eyebrow">01 / 3D MODELS</div><h2>Не картонные.</h2></div><p>Модели сделаны как полноценная WebGL-сцена: объёмная рама, двигатель, тормозные диски, спицы, вилка и пластиковые панели.</p></div><div class="model-switch"><button class="switch active" data-model="gr7"><b>GR7 F300L</b><span>2024 · ZS182MN · 287 см³</span></button><button class="switch" data-model="brz"><b>BRZ NC300</b><span>NC300S · 182MN · ENDURO</span></button><button class="switch" data-model="fx"><b>FXMOTO X1</b><span>X1 · 250 см³ · 21/18</span></button></div><div class="models-note">Это визуальные 3D-модели для сайта, стилизованные под указанные мотоциклы; точные заводские CAD-файлы этих версий публично не найдены.</div></div></section>
 
+<section id="photos"><div class="wrap"><div class="eyebrow">02 / PHOTO GALLERY</div><div class="head"><div><h2>Больше фото</h2></div><p>Реальные фотографии моделей. Нажми на фото, чтобы открыть полный размер.</p></div><div class="photo-grid">
+<a class="photo-card" href="https://63moto.ru/upload/iblock/d1b/6nx9d80jhjb2zea3xkwulajug2y5i745.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://63moto.ru/upload/iblock/d1b/6nx9d80jhjb2zea3xkwulajug2y5i745.jpg" alt="GR7 F300L 2024"><div><b>GR7 F300L</b><span>Боковой вид · 2024</span></div></a>
+<a class="photo-card" href="https://63moto.ru/upload/iblock/955/j5i8x8h0nr27xkkdk8vkrf0ekzucq1a8.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://63moto.ru/upload/iblock/955/j5i8x8h0nr27xkkdk8vkrf0ekzucq1a8.jpg" alt="GR7 F300L 2024"><div><b>GR7 F300L</b><span>Передний 3/4 вид</span></div></a>
+<a class="photo-card" href="https://63moto.ru/upload/iblock/136/dxkx14p8sr0movmtjotr37119clrah2f.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://63moto.ru/upload/iblock/136/dxkx14p8sr0movmtjotr37119clrah2f.jpg" alt="GR7 F300L 2024"><div><b>GR7 F300L</b><span>Вид спереди</span></div></a>
+<a class="photo-card" href="https://63moto.ru/upload/iblock/24b/1lhw8otzvnnm9ftg4i0713acjw5fmlx2.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://63moto.ru/upload/iblock/24b/1lhw8otzvnnm9ftg4i0713acjw5fmlx2.jpg" alt="GR7 F300L 2024"><div><b>GR7 F300L</b><span>Задний 3/4 вид</span></div></a>
+<a class="photo-card" href="https://brzmoto.ru/assets/images/products/11042/big/motoczikl-brz-mx8-nc300s-24-4.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://brzmoto.ru/assets/images/products/11042/big/motoczikl-brz-mx8-nc300s-24-4.jpg" alt="BRZ MX8 NC300S 2024"><div><b>BRZ NC300</b><span>Передняя часть</span></div></a>
+<a class="photo-card" href="https://brzmoto.ru/assets/images/products/11042/big/motoczikl-brz-mx8-nc300s-24-5.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://brzmoto.ru/assets/images/products/11042/big/motoczikl-brz-mx8-nc300s-24-5.jpg" alt="BRZ MX8 NC300S 2024"><div><b>BRZ NC300</b><span>Общий 3/4 вид</span></div></a>
+<a class="photo-card" href="https://brzmoto.ru/assets/images/products/11042/big/motoczikl-brz-mx8-nc300s-24-6.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://brzmoto.ru/assets/images/products/11042/big/motoczikl-brz-mx8-nc300s-24-6.jpg" alt="BRZ MX8 NC300S 2024"><div><b>BRZ NC300</b><span>Вид сзади</span></div></a>
+<a class="photo-card" href="https://cdn.lodka-motor.com/uploads/products/232069/203926_txi0r0gxszey5adgo7ht2q9jpr1nj05.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://cdn.lodka-motor.com/uploads/products/232069/203926_txi0r0gxszey5adgo7ht2q9jpr1nj05.jpg" alt="FXMOTO X1"><div><b>FXMOTO X1</b><span>Боковой вид</span></div></a>
+<a class="photo-card" href="https://cdn.lodka-motor.com/uploads/products/232069/203927_kmcz7wboxco2cevjn03wdtsc3d5nttx.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://cdn.lodka-motor.com/uploads/products/232069/203927_kmcz7wboxco2cevjn03wdtsc3d5nttx.jpg" alt="FXMOTO X1"><div><b>FXMOTO X1</b><span>Передний 3/4 вид</span></div></a>
+<a class="photo-card" href="https://cdn.lodka-motor.com/uploads/products/232069/203928_s2cfww92fp46oa5zta3cxe0atrzan7q.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://cdn.lodka-motor.com/uploads/products/232069/203928_s2cfww92fp46oa5zta3cxe0atrzan7q.jpg" alt="FXMOTO X1"><div><b>FXMOTO X1</b><span>Другой ракурс</span></div></a>
+</div><div class="source-note">Фото: 63moto, BRZMOTO и Lodka Motor. В 3D-блоке используются собственные WebGL-геометрии, а не чужие модели.</div></div></section>
 
-<section id="photos"><div class="wrap">
-<div class="eyebrow">02 / REAL PHOTOS</div>
-<div class="head"><div><h2>Реальные фотографии</h2></div>
-<p>Фотографии взяты с интернет-страниц моделей. Нажми на снимок, чтобы открыть его в полном размере.</p></div>
-<div class="photo-grid">
-  <a class="photo-card" href="https://63moto.ru/upload/iblock/d1b/6nx9d80jhjb2zea3xkwulajug2y5i745.jpg" target="_blank" rel="noopener">
-    <img src="https://63moto.ru/upload/iblock/d1b/6nx9d80jhjb2zea3xkwulajug2y5i745.jpg" alt="GR7 F300L 2024">
-    <div><b>GR7 F300L 2024</b><span>ZS182MN · 287 см³</span></div>
-  </a>
-  <a class="photo-card" href="https://brzmoto.ru/assets/images/products/11333/big/motoczikl-brz-x8-nc300s-24-%282%29-1.jpg" target="_blank" rel="noopener">
-    <img src="https://brzmoto.ru/assets/images/products/11333/big/motoczikl-brz-x8-nc300s-24-%282%29-1.jpg" alt="BRZ X8 NC300S 2024">
-    <div><b>BRZ X8 NC300S 2024</b><span>ZS182MN · NC300S</span></div>
-  </a>
-  <a class="photo-card" href="https://cdn.lodka-motor.com/uploads/products/232069/203928_s2cfww92fp46oa5zta3cxe0atrzan7q.jpg" target="_blank" rel="noopener">
-    <img src="https://cdn.lodka-motor.com/uploads/products/232069/203928_s2cfww92fp46oa5zta3cxe0atrzan7q.jpg" alt="FXMOTO X1 black">
-    <div><b>FXMOTO X1 Black</b><span>чёрно-жёлтая версия</span></div>
-  </a>
-</div>
-<div class="source-note">Источники: GR7 — 63moto; BRZ — официальный BRZMOTO; FXMOTO X1 — Lodka Motor. Фото используются как внешние изображения, поэтому для офлайн-версии сайта их нужно скачать отдельно.</div>
-</div></section>
+<section id="specs"><div class="wrap"><div class="eyebrow">03 / GR7 TECH</div><h2 style="font-size:clamp(34px,5vw,58px);margin:8px 0">GR7 2024 — характеристики</h2><div class="stats"><div class="stat"><small>Двигатель</small><b>ZS182MN</b></div><div class="stat"><small>Объём</small><b>287 см³</b></div><div class="stat"><small>Мощность</small><b>31 л.с.</b></div><div class="stat"><small>Масса</small><b>≈118 кг</b></div></div><div class="table"><div class="r"><span>Тип</span><span>Эндуро, 4-тактный, одноцилиндровый</span></div><div class="r"><span>ГБЦ</span><span>4 клапана, 2 распредвала, балансирный вал</span></div><div class="r"><span>Охлаждение</span><span>Жидкостное</span></div><div class="r"><span>Питание</span><span>NIBBI PWK34</span></div><div class="r"><span>КПП</span><span>6-ступенчатая</span></div><div class="r"><span>Подвеска</span><span>SZC OPTIMA, регулируемая</span></div><div class="r"><span>Колёса</span><span>21 / 18</span></div><div class="r"><span>Высота седла</span><span>930 мм</span></div><div class="r"><span>Колёсная база</span><span>1490 мм</span></div><div class="r"><span>Бак</span><span>8 л</span></div></div></div></section>
+<section id="compare"><div class="wrap"><div class="eyebrow">04 / COMPARE</div><h2 style="font-size:clamp(34px,5vw,58px);margin:8px 0">Сравнение</h2><div class="compare"><table><thead><tr><th>Параметр</th><th>GR7 2024</th><th>BRZ NC300</th><th>FXMOTO X1</th></tr></thead><tbody><tr><td>Двигатель</td><td>ZS182MN</td><td>ZS182MN</td><td>ZS172FMM-3A</td></tr><tr><td>Назначение</td><td>Enduro</td><td>Enduro</td><td>Enduro / off-road</td></tr><tr><td>Колёса</td><td>21/18</td><td>21/18</td><td>21/18</td></tr></tbody></table></div></div></section>
+<footer><div class="wrap">ENDURO LAB · Интерактивный WebGL · Реальные фотографии моделей · Оптимизировано для телефона.</div></footer>
 
-<section id="specs"><div class="wrap"><div class="eyebrow">03 / GR7 TECH</div><h2 style="font-size:clamp(34px,5vw,58px);margin:8px 0">GR7 2024 — подробно</h2>
-<div class="stats"><div class="stat"><small>Двигатель</small><b>ZS182MN</b></div><div class="stat"><small>Объём</small><b>287 см³</b></div><div class="stat"><small>Мощность</small><b>31 л.с.</b></div><div class="stat"><small>Масса</small><b>≈118 кг</b></div></div>
-<div class="table">
-<div class="r"><span>Тип</span><span>Эндуро, 4-тактный, одноцилиндровый</span></div>
-<div class="r"><span>ГБЦ</span><span>4 клапана, 2 распредвала, балансирный вал</span></div>
-<div class="r"><span>Охлаждение</span><span>Жидкостное</span></div>
-<div class="r"><span>Питание</span><span>NIBBI PWK34 — для версии Enduro Optimum</span></div>
-<div class="r"><span>КПП</span><span>6-ступенчатая, схема 1-N-2-3-4-5-6</span></div>
-<div class="r"><span>Передняя подвеска</span><span>SZC OPTIMA, перевёрнутого типа, регулировка сжатия/отбоя</span></div>
-<div class="r"><span>Задняя подвеска</span><span>SZC OPTIMA, моноамортизатор с регулировкой</span></div>
-<div class="r"><span>Колёса</span><span>21" переднее / 18" заднее</span></div>
-<div class="r"><span>Высота седла</span><span>930 мм</span></div>
-<div class="r"><span>Колёсная база</span><span>1490 мм</span></div>
-<div class="r"><span>Бак</span><span>8 л</span></div>
-<div class="r"><span>Габариты</span><span>2200 × 920 × 1300 мм</span></div>
-</div>
-<div class="note">Примечание: у разных годов, версий и поставщиков характеристики могут отличаться. Для BRZ NC300 и FXMOTO X1 я не подменяю неизвестные параметры догадками.</div>
-</div></section>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js';
+import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js';
 
-<section id="compare"><div class="wrap"><div class="eyebrow">04 / COMPARE</div><h2 style="font-size:clamp(34px,5vw,58px);margin:8px 0">В одном экране</h2>
-<div class="compare"><table><thead><tr><th>Параметр</th><th>GR7 2024</th><th>BRZ NC300</th><th>FXMOTO X1</th></tr></thead><tbody>
-<tr><td>Двигатель</td><td>ZS182MN</td><td>182-мотор</td><td>уточняется по версии</td></tr>
-<tr><td>Назначение</td><td>Enduro</td><td>Enduro</td><td>Enduro / off-road</td></tr>
-<tr><td>3D</td><td>✓</td><td>✓</td><td>✓</td></tr>
-</tbody></table></div></div></section>
+const canvas=document.getElementById('main3d'), viewer=document.getElementById('viewer');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(devicePixelRatio,1.7)); renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(35,1,.1,100); camera.position.set(5,2.7,6.7);
+const controls=new OrbitControls(camera,canvas); controls.enableDamping=true; controls.dampingFactor=.075; controls.enablePan=false; controls.minDistance=4; controls.maxDistance=10; controls.target.set(0,1.05,0);
+scene.add(new THREE.HemisphereLight(0xeaf5ff,0x161a14,2.1));
+const key=new THREE.DirectionalLight(0xffffff,3.2); key.position.set(4,7,5); key.castShadow=true; key.shadow.mapSize.set(1024,1024); scene.add(key);
+const rim=new THREE.DirectionalLight(0xb8d8ff,2); rim.position.set(-5,4,-4); scene.add(rim);
+const floor=new THREE.Mesh(new THREE.CircleGeometry(7,64),new THREE.MeshStandardMaterial({color:0x11151a,roughness:.88,metalness:.05})); floor.rotation.x=-Math.PI/2; floor.position.y=-.03; floor.receiveShadow=true; scene.add(floor);
+const grid=new THREE.GridHelper(12,24,0x263029,0x171d1a); grid.position.y=0; grid.material.transparent=true; grid.material.opacity=.28; scene.add(grid);
 
-<footer><div class="wrap">ENDURO LAB · Информационный интерактивный каталог. Данные GR7 сверены по опубликованным спецификациям; характеристики BRZ/FXMOTO не считаются официальными без данных конкретной версии.</div></footer>
-
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-<script>
-const colors={gr7:0xcaff28,brz:0xff7b31,fx:0x15191e};
-function createBike(parent,type){
- const scene=new THREE.Scene(), cam=new THREE.PerspectiveCamera(38,parent.clientWidth/parent.clientHeight,.1,100);
- const r=new THREE.WebGLRenderer({antialias:true,alpha:true});r.setPixelRatio(Math.min(devicePixelRatio,2));r.setSize(parent.clientWidth,parent.clientHeight);parent.appendChild(r.domElement);
- scene.add(new THREE.HemisphereLight(0xffffff,0x20252c,2));let l=new THREE.DirectionalLight(0xffffff,3);l.position.set(4,7,5);scene.add(l);
- const g=new THREE.Group();scene.add(g);let accent=colors[type];const M=(c,m=0.3,q=.35)=>new THREE.MeshStandardMaterial({color:c,metalness:m,roughness:q});
- const black=M(0x11161c,.6,.28), dark=M(0x07090b,.5,.4), ac=M(accent,.15,.3), metal=M(0x68737b,.85,.24), tire=M(0x050505,.05,.92);
- function box(s,p,m){let x=new THREE.Mesh(new THREE.BoxGeometry(...s),m);x.position.set(...p);g.add(x)}
- function cyl(rad,len,p,m,rot=[0,0,0]){let x=new THREE.Mesh(new THREE.CylinderGeometry(rad,rad,len,20),m);x.position.set(...p);x.rotation.set(...rot);g.add(x)}
- function wheel(z){let w=new THREE.Group();w.position.set(0,1,z);let t=new THREE.Mesh(new THREE.TorusGeometry(.54,.13,14,30),tire);t.rotation.y=Math.PI/2;w.add(t);let h=new THREE.Mesh(new THREE.CylinderGeometry(.09,.09,.18,18),metal);h.rotation.z=Math.PI/2;w.add(h);for(let i=0;i<12;i++){let a=i*Math.PI/6,s=new THREE.Mesh(new THREE.CylinderGeometry(.009,.009,.5,7),metal);s.rotation.z=Math.PI/2;s.rotation.y=a;w.add(s)}g.add(w)}
- wheel(-2.15);wheel(2.1);
- box([.45,.24,2.55],[0,1.6,0],black);box([.35,.18,1.15],[0,1.98,-.05],ac);box([.62,.4,.82],[0,1.22,.18],dark);box([.7,.14,1.2],[0,2.13,.3],black);box([.5,.24,.38],[0,1.94,1.42],dark);
- box([.07,.07,1.2],[.3,1.35,1.1],ac);box([.07,.07,1.2],[-.3,1.35,1.1],ac);
- cyl(.055,1.7,[0,1.05,1.32],metal,[Math.PI/2,0,0]);cyl(.055,1.7,[0,1.05,-1.4],metal,[Math.PI/2,0,0]);
- box([.12,.7,.12],[.37,1.48,.05],metal);box([.12,.7,.12],[-.37,1.48,.05],metal);
- box([.18,.75,.65],[0,.98,.18],black);cyl(.29,.14,[0,1.23,.1],metal,[Math.PI/2,0,0]);
- if(type==='fx'){box([.78,.22,1.15],[0,1.86,.45],dark);box([.55,.12,.8],[0,2.05,1.0],dark)}
- return {g,cam,r};
-}
-const main=document.getElementById('mainViewer'), V=createBike(main,'gr7');V.cam.position.set(5,2.3,7);
-let rx=.12,ry=-.35,dist=7,down=false,lx=0,ly=0;
-main.addEventListener('pointerdown',e=>{down=true;lx=e.clientX;ly=e.clientY;main.setPointerCapture(e.pointerId)});
-main.addEventListener('pointerup',()=>down=false);main.addEventListener('pointermove',e=>{if(!down)return;ry+=(e.clientX-lx)*.009;rx+=(e.clientY-ly)*.006;rx=Math.max(-.55,Math.min(.55,rx));lx=e.clientX;ly=e.clientY});
-main.addEventListener('wheel',e=>{dist=Math.max(4.5,Math.min(10,dist+e.deltaY*.004))});
-function loop(){requestAnimationFrame(loop);V.g.rotation.y=ry;V.g.rotation.x=rx;V.cam.position.z=dist;V.cam.lookAt(0,1,0);V.r.render(V.g.parent,V.cam)}loop();
-const minis=[['mini1','gr7'],['mini2','brz'],['mini3','fx']];minis.forEach(([id,type])=>{let el=document.getElementById(id),x=createBike(el,type);x.cam.position.set(4,2,6);x.g.rotation.y=-.45;x.g.rotation.x=.1;(function f(){requestAnimationFrame(f);x.g.rotation.y+=.003;x.cam.lookAt(0,1,0);x.r.render(x.g.parent,x.cam)})()});
-document.querySelectorAll('.model').forEach(card=>card.querySelector('button').onclick=()=>{let type=card.dataset.bike;document.querySelectorAll('.model').forEach(c=>c.classList.remove('active'));card.classList.add('active');main.replaceChildren();const n=createBike(main,type);V.g=n.g;V.cam=n.cam;V.r=n.r;V.cam.position.set(5,2.3,7);rx=.1;ry=-.35;dist=7;document.getElementById('viewerLabel').textContent=type==='gr7'?'GR7 · 2024 · ZS182MN':type==='brz'?'BRZ NC300 · 182 MOTOR':'FXMOTO X1 · BLACK'});
-addEventListener('resize',()=>{});
+const mat=(color,rough=.5,metal=.15)=>new THREE.MeshStandardMaterial({color,roughness:rough,metalness:metal});
+const rubber=mat(0x111315,.92,.02), black=mat(0x171a1c,.45,.6), metal=mat(0x9ca5aa,.24,.82), darkMetal=mat(0x30373b,.32,.88), chrome=mat(0xbfc7c9,.16,.95);
+function cyl(r1,r2,len,m,rad=16){return new THREE.Mesh(new THREE.CylinderGeometry(r1,r2,len,rad),m)}
+function box(x,y,z,m,bevel=0){let g=new THREE.BoxGeometry(x,y,z);let o=new THREE.Mesh(g,m);return o}
+function tube(a,b,r,m){const d=new THREE.Vector3().subVectors(b,a), len=d.length(), o=cyl(r,r,len,m,12);o.position.copy(a).add(b).multiplyScalar(.5);o.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),d.normalize());return o}
+function wheel(z,x,scale=1){const g=new THREE.Group(); g.position.set(x,.67,z); const tire=new THREE.Mesh(new THREE.TorusGeometry(.67*scale,.115*scale,18,48),rubber); tire.rotation.y=Math.PI/2; tire.castShadow=true; g.add(tire); const rim=new THREE.Mesh(new THREE.CylinderGeometry(.52*scale,.52*scale,.08,32),metal); rim.rotation.z=Math.PI/2; rim.castShadow=true; g.add(rim); const hub=cyl(.1*scale,.1*scale,.16*scale,darkMetal,20); hub.rotation.z=Math.PI/2; g.add(hub); for(let i=0;i<12;i++){const a=i*Math.PI*2/12; g.add(tube(new THREE.Vector3(0,0,0),new THREE.Vector3(0,Math.cos(a)*.49*scale,Math.sin(a)*.49*scale),.012*scale,chrome));} return g}
+function makeBike(type){const g=new THREE.Group(); const cfg={gr7:{body:0xc7ff25,accent:0x15191c},brz:{body:0xd9dde1,accent:0x121519},fx:{body:0x17191b,accent:0xe7d100}}[type]; const body=mat(cfg.body,.28,.28), accent=mat(cfg.accent,.3,.55);
+ g.add(wheel(-.78,-1.65,1)); g.add(wheel(.78,1.55,1));
+ // swingarm + frame
+ g.add(tube(new THREE.Vector3(-1.65,.7,0),new THREE.Vector3(.05,.72,0),.075,darkMetal));
+ g.add(tube(new THREE.Vector3(-.15,.72,0),new THREE.Vector3(.55,1.45,0),.075,accent));
+ g.add(tube(new THREE.Vector3(.55,1.45,0),new THREE.Vector3(-.25,1.65,0),.075,accent));
+ g.add(tube(new THREE.Vector3(-.25,1.65,0),new THREE.Vector3(-1.15,.88,0),.07,accent));
+ // engine
+ const eng=box(.78,.72,.56,darkMetal); eng.position.set(-.05,1.02,0); eng.castShadow=true; g.add(eng);
+ const head=box(.55,.34,.5,metal); head.position.set(.1,1.5,0); g.add(head);
+ for(let i=0;i<4;i++){const fin=box(.7,.035,.6,chrome);fin.position.set(-.1,1.23+i*.07,0);g.add(fin)}
+ // exhaust
+ const ex=cyl(.09,.13,1.55,chrome,18); ex.rotation.z=Math.PI/2; ex.position.set(-.35,1.05,.43); g.add(ex); const muff=cyl(.16,.18,.72,black,20); muff.rotation.z=Math.PI/2; muff.position.set(-1.0,1.15,.43); g.add(muff);
+ // tank + seat
+ const tank=new THREE.Mesh(new THREE.SphereGeometry(.56,28,18),body); tank.scale.set(1.35,.55,.8); tank.position.set(.18,1.75,0); tank.castShadow=true;g.add(tank);
+ const seat=new THREE.Mesh(new THREE.BoxGeometry(1.15,.18,.48),black); seat.position.set(-.68,1.85,0); seat.rotation.z=-.05;g.add(seat);
+ // fenders/panels
+ const panel=box(.72,.45,.11,body);panel.position.set(-.72,1.55,.46);panel.rotation.z=-.18;g.add(panel);
+ const rear=box(.65,.25,.1,body);rear.position.set(-1.28,1.42,.43);rear.rotation.z=-.18;g.add(rear);
+ // fork and front number plate
+ const f1=tube(new THREE.Vector3(1.28,.78,-.25),new THREE.Vector3(1.1,2.05,-.25),.055,chrome); const f2=f1.clone();f2.position.z=.25;g.add(f1,f2);g.add(tube(new THREE.Vector3(1.08,2.0,-.3),new THREE.Vector3(1.08,2.0,.3),.07,accent));
+ const plate=box(.08,.58,.62,body);plate.position.set(1.03,1.8,0);plate.rotation.z=-.16;g.add(plate);
+ // handlebar
+ g.add(tube(new THREE.Vector3(.88,2.18,-.58),new THREE.Vector3(.88,2.18,.58),.035,black));
+ // footpegs
+ g.add(cyl(.06,.06,.55,metal,12));g.children[g.children.length-1].rotation.z=Math.PI/2;g.children[g.children.length-1].position.set(-.35,.82,.38);
+ g.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true}}); g.rotation.y=Math.PI*.08; return g; }
+let current=makeBike('gr7');scene.add(current);
+const names={gr7:['GR7 F300L','2024 · ZS182MN · ENDURO'],brz:['BRZ NC300','NC300S · 182MN · ENDURO'],fx:['FXMOTO X1','X1 · 250 см³ · ENDURO']};
+function select(type){scene.remove(current);current=makeBike(type);scene.add(current);document.getElementById('vname').textContent=names[type][0];document.getElementById('vsub').textContent=names[type][1];document.querySelectorAll('.switch').forEach(b=>b.classList.toggle('active',b.dataset.model===type));}
+document.querySelectorAll('.switch').forEach(b=>b.addEventListener('click',()=>select(b.dataset.model)));
+function resize(){const r=viewer.getBoundingClientRect(); renderer.setSize(r.width,r.height,false); camera.aspect=r.width/r.height;camera.updateProjectionMatrix()} window.addEventListener('resize',resize);resize();
+function animate(){requestAnimationFrame(animate);controls.update();renderer.render(scene,camera)} animate();
 </script>
 </body></html>
